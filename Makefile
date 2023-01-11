@@ -1,4 +1,7 @@
-install:
+env-prepare:
+	cp -n .env.example .env
+
+install: env-prepare
 	poetry install
 
 qna-helper:
