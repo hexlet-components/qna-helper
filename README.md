@@ -17,6 +17,8 @@ make fast-install
 
 ## Usage
 
+Setup OPENAI_API_KEY in `.env` file.
+
 ```bash
 usage: qna-helper [options]
 
