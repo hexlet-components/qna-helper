@@ -8,8 +8,9 @@ build:
 	poetry build
 
 package-install:
-	python3 -m pip install --user dist/*.whl
+	python -m pip install --user dist/*.whl
 
 lint:
 	poetry run flake8 qna_helper
 
+fast-install: build package-install
