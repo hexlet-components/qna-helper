@@ -23,3 +23,6 @@ compose-build:
 
 compose-bash:
 	docker compose run --rm app bash
+
+run:
+	poetry run qna-helper -i questions.csv

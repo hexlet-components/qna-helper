@@ -6,7 +6,6 @@ RUN apt-get install -y make
 RUN pip install poetry requests
 
 ENV PATH /root/.poetry/bin:$PATH
-RUN poetry config virtualenvs.create false
 
 WORKDIR /app
 

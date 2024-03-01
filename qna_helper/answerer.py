@@ -35,11 +35,12 @@ def get_answer(question):
             messages=[
                 {
                     "role": "user",
-                    "content": f'Напиши урок на тему {question}',
+                    "content": f'развернутый ответ на вопрос {question}',
                 }
             ],
             model="gpt-3.5-turbo",
         )
-        return chat_completion.choices[0].text
+        print(chat_completion)
+        return chat_completion.choices[0].message.content
     except Exception:
         logging.info(f"Skipped {question}")
