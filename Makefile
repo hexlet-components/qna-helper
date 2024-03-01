@@ -17,3 +17,9 @@ lint:
 	poetry run flake8 qna_helper
 
 fast-install: build package-install
+
+compose-build:
+	docker compose build
+
+compose-bash:
+	docker compose run --rm app bash
