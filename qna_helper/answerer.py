@@ -1,16 +1,17 @@
 import os
+from dotenv import load_dotenv
 from openai import OpenAI
 import pandas as pd
 import logging
 
 from alive_progress import alive_bar
 
+
+load_dotenv()
 logging.basicConfig(level=logging.INFO)
 
-client = OpenAI(
-    # This is the default and can be omitted
-    api_key=os.getenv("OPENAI_API_KEY"),
-)
+
+client = OpenAI()
 
 
 def convert(df_of_answers, output_path):

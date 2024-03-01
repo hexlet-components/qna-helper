@@ -1,10 +1,6 @@
-from dotenv import load_dotenv
-
 from qna_helper.cli import parse_args
 from qna_helper.parser import get_questions
 from qna_helper.answerer import make_answers
-
-load_dotenv()
 
 
 def main():
