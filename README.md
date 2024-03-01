@@ -4,18 +4,14 @@ CLI-utulite for answering questions stored in `.csv` using davinci-003. Output f
 
 ## Requirements
 
-- python = "^3.11"
-- pandas = "^1.5.2"
-- openai = "^0.26.0"
-- alive-progress = "^3.0.1"
-
-## Installation
-
-```bash
-make fast-install
-```
+* Docker, Docker compose
 
 ## Usage
+
+```bash
+make compose-bash
+poetry run qna-helper -i questions.csv
+```
 
 Setup OPENAI_API_KEY in `.env` file.
 
