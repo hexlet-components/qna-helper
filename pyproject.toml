@@ -11,10 +11,10 @@ qna-helper="qna_helper.scripts.qna_helper:main"
 
 [tool.poetry.dependencies]
 python = "^3.11"
-pandas = "^2.2.1"
 openai = "^1.13.3"
 alive-progress = "^3.1.5"
 python-dotenv = "^1.0.1"
+tqdm = "^4.66.0"
 
 [tool.poetry.group.dev.dependencies]
 flake8 = "^6.0.0"

@@ -1,28 +1,23 @@
-env-prepare:
-	cp -n .env.example .env
-
-install: env-prepare
-	poetry install
-
-qna-helper:
-	poetry run qna-helper
-
-build:
-	poetry build
-
-package-install:
-	python -m pip install --user dist/*.whl
-
-lint:
-	poetry run flake8 qna_helper
-
-fast-install: build package-install
+compose-setup: compose-build compose-app-setup
 
 compose-build:
 	docker compose build
 
+compose-app-setup:
+	docker compose run app make setup
+
 compose-bash:
 	docker compose run --rm app bash
 
-run:
-	poetry run qna-helper -i questions.csv
+compose:
+	docker compose up
+
+setup:
+	poetry install
+	cp -n .env.example .env
+
+qna-helper:
+	poetry run qna-helper
+
+lint:
+	poetry run flake8 qna_helper

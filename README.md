@@ -5,12 +5,13 @@ CLI-utulite for answering questions stored in `.csv` using davinci-003. Output f
 ## Requirements
 
 * Docker, Docker compose
+* input filename should be _questions.csv_
 
 ## Usage
 
 ```bash
-make compose-bash
-poetry run qna-helper -i questions.csv
+make compose-setup
+make compose
 ```
 
 Setup OPENAI_API_KEY in `.env` file.
