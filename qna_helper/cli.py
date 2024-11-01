@@ -13,7 +13,7 @@ def parse_args():
         '-h',
         '--help',
         action='help',
-        help='dispaly help for command',
+        help='display help for command',
     )
     parser.add_argument(
         '-i',

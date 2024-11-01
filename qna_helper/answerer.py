@@ -1,14 +1,13 @@
-from dotenv import load_dotenv
-from openai import AsyncOpenAI
 import csv
+import functools
 import json
 import logging
 from collections import namedtuple
-import asyncio
 from contextlib import asynccontextmanager
 
+from dotenv import load_dotenv
+from openai import AsyncOpenAI, OpenAIError
 from tqdm.asyncio import tqdm
-
 
 load_dotenv()
 logging.basicConfig(level=logging.INFO)
@@ -24,6 +23,12 @@ async def async_open_file(path, mode):
         yield f
     finally:
         f.close()
+
+
+@functools.lru_cache()
+def load_prompt():
+    with open('prompt.json') as f:
+        return json.load(f)
 
 
 async def write_result_to_csv(result, output_path):
@@ -74,7 +79,7 @@ client = AsyncOpenAI()
 async def get_answer(question):
     logging.info(f'Processing: {question}')
     try:
-        prompt = json.loads(open('prompt.json').read())
+        prompt = load_prompt()
         chat_completion = await client.chat.completions.create(
             messages=[*prompt,
                 {
@@ -82,10 +87,12 @@ async def get_answer(question):
                     "content": f'Дай развернутый ответ на вопрос {question}',
                 }
             ],
-            model="gpt-3.5-turbo",
+            model="gpt-4o-mini",
         )
-        logging.info(chat_completion)
-        return chat_completion.choices[0].message.content
+    except OpenAIError as e:
+        logging.error(f"OpenAI API error for question '{question.title}': {str(e)}")
+        return ""
     except Exception as e:
-        logging.debug(f"Skipped {question}")
-        logging.debug(e)
+        logging.error(f"Unexpected error processing question '{question.title}': {str(e)}")
+        return ""
+    return chat_completion.choices[0].message.content

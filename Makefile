@@ -10,14 +10,14 @@ compose-bash:
 	docker compose run --rm app bash
 
 compose:
-	docker compose up
+	docker compose up --abort-on-container-exit
 
 setup:
-	poetry install
+	uv sync
 	cp -n .env.example .env
 
 qna-helper:
-	poetry run qna-helper
+	uv run qna-helper
 
 lint:
-	poetry run flake8 qna_helper
+	uv run ruff check qna_helper

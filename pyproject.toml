@@ -1,24 +1,24 @@
-[tool.poetry]
+[project]
 name = "qna-helper"
 version = "0.1.0"
-description = "CLI-utilite builded for answering question in csv using davinci-003"
-authors = ["emp7yhead <artyomkropp@gmail.com>"]
+description = "Add your description here"
 readme = "README.md"
-packages = [{include = "qna_helper"}]
+requires-python = ">=3.11"
+dependencies = [
+    "alive-progress>=3.2.0",
+    "openai>=1.53.0",
+    "python-dotenv>=1.0.1",
+    "tqdm>=4.66.6",
+]
 
-[tool.poetry.scripts]
+[project.scripts]
 qna-helper="qna_helper.scripts.qna_helper:main"
 
-[tool.poetry.dependencies]
-python = "^3.11"
-openai = "^1.13.3"
-alive-progress = "^3.1.5"
-python-dotenv = "^1.0.1"
-tqdm = "^4.66.0"
-
-[tool.poetry.group.dev.dependencies]
-flake8 = "^6.0.0"
+[tool.uv]
+dev-dependencies = [
+    "ruff>=0.7.1",
+]
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"

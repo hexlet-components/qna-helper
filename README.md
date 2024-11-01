@@ -1,20 +1,21 @@
 # qna-helper
 
-CLI-utulite for answering questions stored in `.csv` using davinci-003. Output file is also `.csv`.
+CLI-utility for answering questions stored in `.csv` using davinci-003. Output file is also `.csv`.
 
 ## Requirements
 
 * Docker, Docker compose
 * input filename should be _questions.csv_
+* delimiter should be `;`
 
 ## Usage
+
+Setup OPENAI_API_KEY in `.env` file.
 
 ```bash
 make compose-setup
 make compose
 ```
-
-Setup OPENAI_API_KEY in `.env` file.
 
 ```bash
 usage: qna-helper [options]
