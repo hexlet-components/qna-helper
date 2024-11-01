@@ -5,3 +5,4 @@ services:
     volumes:
       - .:/app
     command: make qna-helper
+    container_name: qna-helper
